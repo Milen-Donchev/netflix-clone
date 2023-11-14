@@ -14,7 +14,7 @@ const BrowseLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <div>
       <Navbar profile={profile} />
-      <main className="pt-20">{children}</main>
+      <main>{children}</main>
     </div>
   );
 };

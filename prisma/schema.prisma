@@ -45,6 +45,7 @@ model User {
   hashedPassword   String?
   image            String?
   currentProfileId String? @db.ObjectId
+  favoriteIds      String[] @db.ObjectId
   accounts         Account[]
   sessions         Session[]
   profiles         Profile[]
@@ -75,4 +76,25 @@ enum ProfileColor {
   RED
   YELLOW
   GREEN
+}
+
+model Genre {
+  id    String  @id @default(auto()) @map("_id") @db.ObjectId
+  label String
+  key   String
+
+  movies Movie[]
+}
+
+model Movie {
+  id    String  @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  description String
+  videoUrl String
+  thumbnailUrl String
+  genreId String @db.ObjectId
+  genre Genre @relation(fields: [genreId], references: [id], onDelete: Cascade)
+  duration String
+
+  @@index([genreId])
 }

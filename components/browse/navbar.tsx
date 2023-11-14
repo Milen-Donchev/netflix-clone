@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 
 import ProfileDropdown from "@/components/browse/profile-dropdown";
 import MobileNavbarDropdown from "@/components/browse/mobile-navbar-dropdown";
+import { useScrollPosition } from "@/hooks/use-scroll-position";
 
 const ROUTES = [
   {
@@ -56,9 +57,17 @@ interface NavbarProps {
 const Navbar = ({ profile }: NavbarProps) => {
   const router = useRouter();
   const pathname = usePathname();
+  const { isAboveThreshold } = useScrollPosition(30);
+
+  const isTransparent = pathname === "/browse" && !isAboveThreshold;
 
   return (
-    <div className="w-full h-20 fixed top-0 left-0 bg-gradient-to-b from-neutral-950 to-neutral-900 px-4 lg:px-16 flex items-center justify-between">
+    <div
+      className={cn(
+        "w-full h-20 z-40 fixed top-0 left-0 bg-gradient-to-b from-neutral-950 to-neutral-900 px-4 lg:px-16 flex items-center justify-between",
+        isTransparent && "bg-transparent from-transparent to-transparent"
+      )}
+    >
       <div className="flex items-center gap-x-4 lg:gap-x-8">
         <Image
           onClick={() => router.push("/browse")}

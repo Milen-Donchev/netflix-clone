@@ -28,6 +28,7 @@ const ProfileButton = ({
     try {
       await axios.put("/api/user/profile", { profileId: id });
       router.push("/browse");
+      router.refresh();
     } catch (error: any) {
       toast.error(error.message);
     }
