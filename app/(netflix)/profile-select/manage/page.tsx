@@ -18,10 +18,11 @@ const ProfileSelectPage = async () => {
           Manage Profiles:
         </h1>
         <div className="flex flex-wrap items-center gap-x-4 md:gap-x-8">
-          {profiles.map((profile) => (
-            <ProfileButton key={profile.id} editMode {...profile} />
-          ))}
-          {profiles.length < 5 && <AddProfileButton />}
+          {profiles &&
+            profiles.map((profile) => (
+              <ProfileButton key={profile.id} editMode {...profile} />
+            ))}
+          {profiles && profiles.length < 5 && <AddProfileButton />}
         </div>
         <Link href="/profile-select">
           <Button

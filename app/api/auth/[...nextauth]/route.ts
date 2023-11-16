@@ -5,7 +5,7 @@ import Credentials from "next-auth/providers/credentials";
 
 import prisma from "@/lib/prismadb";
 
-export const nextAuthOptions: NextAuthOptions = {
+const nextAuthOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   session: {
     maxAge: 30 * 24 * 60 * 60, // 30d
