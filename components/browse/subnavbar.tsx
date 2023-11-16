@@ -14,7 +14,7 @@ const Subnavbar = ({ type }: SubnavbarProps) => {
   return (
     <div
       className={cn(
-        "fixed top-20 left-0 w-full h-24 flex items-center bg-transparent transition-colors px-4 lg:px-16",
+        "fixed top-20 left-0 w-full h-24 z-40 flex items-center bg-transparent transition-colors px-4 lg:px-16",
         isAboveThreshold && "bg-neutral-900"
       )}
     >

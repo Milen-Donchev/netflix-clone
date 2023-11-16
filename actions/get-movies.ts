@@ -1,14 +1,14 @@
 import prisma from "@/lib/prismadb";
 import { getCurrentUser } from "./get-current-user";
 
-export const getMovies = async (genreId?: string) => {
+export const getMovies = async (genreKey?: string) => {
   try {
     const currentUser = await getCurrentUser();
     if (!currentUser) return { movies: null, error: "Unauthenticated" };
 
     const movies = await prisma.movie.findMany({
       where: {
-        ...(genreId && { genreId }),
+        ...(genreKey && { genreKey }),
       },
       include: {
         genre: true,

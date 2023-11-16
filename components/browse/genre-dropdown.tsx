@@ -11,8 +11,9 @@ import {
 
 const genres = [
   { id: 1, label: "Comedy", key: "comedy" },
-  { id: 2, label: "Horror", key: "horror" },
-  { id: 3, label: "Documentary", key: "documentary" },
+  { id: 2, label: "Adventure", key: "adventure" },
+  { id: 3, label: "Action", key: "action" },
+  { id: 4, label: "Sci-Fi", key: "sci-fi" },
 ];
 
 const GenreDropdown = () => {
@@ -26,7 +27,7 @@ const GenreDropdown = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="outline-none bg-neutral-950">
+      <DropdownMenuTrigger className="outline-none bg-neutral-950 rounded-md">
         <div className="px-4 py-1 border-2 flex items-center rounded-md gap-x-3 shadow-sm text-neutral-200">
           {currentGenre ? currentGenre.label : "Genres"}
           <ChevronDown className="w-4 h-4 shrink-0" />

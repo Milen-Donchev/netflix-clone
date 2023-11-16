@@ -45,7 +45,6 @@ model User {
   hashedPassword   String?
   image            String?
   currentProfileId String? @db.ObjectId
-  favoriteIds      String[] @db.ObjectId
   accounts         Account[]
   sessions         Session[]
   profiles         Profile[]
@@ -84,6 +83,8 @@ model Genre {
   key   String
 
   movies Movie[]
+
+  @@unique([id, key])
 }
 
 model Movie {
@@ -93,8 +94,9 @@ model Movie {
   videoUrl String
   thumbnailUrl String
   genreId String @db.ObjectId
-  genre Genre @relation(fields: [genreId], references: [id], onDelete: Cascade)
+  genreKey String
+  genre Genre @relation(fields: [genreId, genreKey], references: [id, key], onDelete: Cascade)
   duration String
 
-  @@index([genreId])
+  @@index([genreId, genreKey])
 }

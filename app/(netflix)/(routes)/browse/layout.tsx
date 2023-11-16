@@ -11,7 +11,12 @@ const BrowseLayout = async ({ children }: { children: React.ReactNode }) => {
     return redirect("/profile-select");
   }
 
-  return <main>{children}</main>;
+  return (
+    <div>
+      <Navbar profile={profile} />
+      <main>{children}</main>
+    </div>
+  );
 };
 
 export default BrowseLayout;

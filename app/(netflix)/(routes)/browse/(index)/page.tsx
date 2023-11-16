@@ -13,7 +13,11 @@ const BrowsePage = async () => {
 
   return (
     <div className="w-full h-full">
-      {!movies && <p className="mt-20">There are no movies</p>}
+      {!movies && (
+        <p className="mt-20 text-white text-center text-xl">
+          There are no movies
+        </p>
+      )}
       {randomMovie && <Billboard {...randomMovie} />}
       {movies && (
         <div className="pb-40">

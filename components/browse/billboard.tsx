@@ -1,10 +1,12 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Info, Play, Volume2, VolumeX } from "lucide-react";
 
 import type { Genre } from "@prisma/client";
 
 interface BillboardProps {
+  id: string;
   title: string;
   description: string;
   videoUrl: string;
@@ -14,14 +16,20 @@ interface BillboardProps {
 }
 
 const Billboard = ({
+  id,
   title,
   description,
   videoUrl,
   thumbnailUrl,
-  duration,
   genre,
 }: BillboardProps) => {
+  const router = useRouter();
+
   const [muted, setMuted] = useState(true);
+
+  const handlePlay = () => {
+    router.push(`/watch/${id}`);
+  };
 
   return (
     <div className="relative h-[56.25vw]">
@@ -43,15 +51,12 @@ const Billboard = ({
         </p>
         <div className="flex items-center gap-x-2 mt-3 md:mt-4">
           <div className="flex items-center">
-            <button className="flex text-neutral-900 items-center gap-x-2 bg-white hover:bg-white/80 rounded-md py-1 md:py-2 px-2 md:px-4 w-auto text-xs lg:text-lg font-semibold">
+            <button
+              onClick={handlePlay}
+              className="flex text-neutral-900 items-center gap-x-2 bg-white hover:bg-white/80 rounded-md py-1 md:py-2 px-2 md:px-4 w-auto text-xs lg:text-lg font-semibold"
+            >
               <Play className="w-5 h-5 shrink-0 fill-neutral-900" />
               Play
-            </button>
-          </div>
-          <div className="flex items-center">
-            <button className="bg-white/30 text-white rounded-md py-1 md:py-2 px-2 md:px-4 w-auto text-xs lg:text-lg font-semibold flex items-center hover:bg-white/20 transition">
-              <Info className="w-5 h-5 shrink-0 mr-2" />
-              More Info
             </button>
           </div>
 
