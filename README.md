@@ -14,4 +14,8 @@ A Netflix clone app , using Next 14.
 - UI with TailwindCSS and ShadcnUI
 - Filter movies / TV shows by genre
 - MongoDB + Prisma for db management
+- Hosted on Vercel
 
+## Demo
+
+https://netflix-clone-ua9d.vercel.app
